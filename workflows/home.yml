@@ -9,11 +9,14 @@ jobs:
     # операционная система для работы воркфлоу
     runs-on: ubuntu-latest
     steps: # список шагов, которые надо выполнить
-      # экшен — выполняет какую-то задачу
-      # checkout — клонирует репозиторий
-      - uses: actions/checkout@v4
-      # run – произвольная bash-команда
-      # ls -la выведет содержимое текущего репозитория
-      - run: make setup
-      - run: make test
-      - run: make link
+      - name: setup
+        uses: actions/checkout@v4
+        run: make setup
+          -
+      - name: test
+        uses: actions/checkout@v4
+        run: make test
+
+      - name: link
+        uses: actions/checkout@v4
+        run: make link
